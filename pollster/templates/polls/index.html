@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+ <div style="margin-top: 30px; margin-bottom: 30px">
+   <h1> Poll Questions</h1>
+ </div>
+  
+ {% if  poll_question_list %}
+
+  {% for question in poll_question_list %}
+    <div class="card-mb-3">
+      <div class="card-body">
+        <p class="lead" >{{ question.poll_question}}</p>
+        <a href="{% url 'polls:details' question.id}" class="btn btn-primary btn-sm">Vote now</a>
+        <a href="{% url 'polls:results' question.id}" class="btn btn-secondary btn-sm">Poll Results</a>
+      </div>
+    </div>
+  {% endfor %}
+
+ {% else %}
+   <p> No Poll Questions yet </p>
+ {% endif %}
+
+
+{% endblock %}
